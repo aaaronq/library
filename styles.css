@@ -1,0 +1,107 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    background-color: gold;
+    box-shadow: 1px 2px 3px rgb(0, 0, 0, .25)
+}
+
+.container {
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+.header > .container h1 {
+    margin: 0;
+    padding: 5px;
+    font-size: 60px;
+}
+
+.main { 
+    text-align: center;
+}
+
+#addBookBtn {
+    margin-top: 10px;
+    font-size: 32px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 100vw;
+    margin-bottom: 30px;
+}
+
+#addBookBtn:hover {
+    background-color: rgb(118, 215, 248);
+    cursor: pointer;
+}
+
+#addBookBtn:active {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.book {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    padding: 15px;  
+    font-size: 20px;
+    gap: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 2px;
+}
+
+.book p{
+    margin: 0;
+    padding: 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: inherit;
+}
+
+.btn-remove {
+    background-color: rgb(230, 230, 230);
+}
+
+.btn-green {
+    background-color: rgb(140, 252, 140);
+}
+
+.btn-green:hover {
+    background-color: rgb(143, 221, 143);
+    cursor: pointer;
+}
+
+.btn-green:active {
+    background-color: rgb(130, 184, 130);
+    cursor: pointer;
+}
+
+.btn-red {
+    background-color: rgb(255, 122, 107);
+}
+
+.bookgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
