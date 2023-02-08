@@ -96,6 +96,7 @@ form.addEventListener("submit", (e) => {
 
 	myLibrary.push(newBook);
 	addBookToLibrary(newBook);
+	window.scrollTo(0, document.body.scrollHeight);
 });
 
 let theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
