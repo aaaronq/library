@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Library</title>
 		<link rel="stylesheet" href="styles.css" />
+		<script src="scripts.js" defer></script>
 	</head>
 	<body>
 		<header class="header">
@@ -14,71 +15,62 @@
 			</div>
 		</header>
 		<main class="main container">
-			<button id="addBookBtn">+ Add Book</button>
+			<button class="addBookBtn" id="addBookBtn1">+ Add Book</button>
 			<div class="bookgrid">
 				<div class="book">
 					<p>"The Great Gatsby"</p>
 					<p>F. Scott. Fitzgerald</p>
 					<p>190 pages</p>
 					<div class="buttons">
-						<button class="btn btn-green">Read</button>
-						<button class="btn">Remove</button>
-					</div> 
-                </div>
-                <div class="book">
-					<p>"The Great Gatsby"</p>
-					<p>F. Scott. Fitzgerald</p>
-					<p>190 pages</p>
-					<div class="buttons">
-						<button class="btn btn-green">Read</button>
-						<button class="btn">Remove</button>
-					</div> 
-                </div>
-                <div class="book">
-					<p>"The Great Gatsby"</p>
-					<p>F. Scott. Fitzgerald</p>
-					<p>190 pages</p>
-					<div class="buttons">
-						<button class="btn btn-green">Read</button>
-						<button class="btn">Remove</button>
-					</div> 
-                </div>
-                <div class="book">
-					<p>"The Great Gatsby"</p>
-					<p>F. Scott. Fitzgerald</p>
-					<p>190 pages</p>
-					<div class="buttons">
-						<button class="btn btn-green">Read</button>
-						<button class="btn">Remove</button>
-					</div> 
-                </div>
-                <div class="book">
-					<p>"The Great Gatsby"</p>
-					<p>F. Scott. Fitzgerald</p>
-					<p>190 pages</p>
-					<div class="buttons">
-						<button class="btn btn-green">Read</button>
-						<button class="btn">Remove</button>
-					</div> 
-                </div>
-                <div class="book">
-					<p>"The Great Gatsby"</p>
-					<p>F. Scott. Fitzgerald</p>
-					<p>190 pages</p>
-					<div class="buttons">
-						<button class="btn btn-green">Read</button>
-						<button class="btn">Remove</button>
-					</div> 
-                </div>
-                <div class="book">
-					<p>"The Great Gatsby"</p>
-					<p>F. Scott. Fitzgerald</p>
-					<p>190 pages</p>
-					<div class="buttons">
-						<button class="btn btn-green">Read</button>
-						<button class="btn">Remove</button>
-					</div> 
-                </div>
+						<button class="btn btn-green btn-red">Read</button>
+						<button class="btn btn-remove">Remove</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal">
+				<div class="modalcontent">
+					<span id="closeModalBtn">x</span>
+					<div class="padding">
+						<h2>Add a book</h2>
+						<form id="addBookForm">
+							<label for="author">Author</label>
+							<input
+								type="text"
+								id="author"
+								name="author"
+								required
+								autocomplete="off"
+								maxlength="15"
+							/>
+							<label for="title">Title</label>
+							<input
+								type="text"
+								id="title"
+								name="title"
+								required
+								autocomplete="off"
+								maxlength="15"
+							/>
+							<div class="bottom">
+								<label for="pages">Pages</label>
+								<input
+									type="number"
+									id="pages"
+									name="pages"
+									required
+									autocomplete="off"
+									max="9999"
+
+								/>
+								<label id="readlabel" for="read">Read?</label>
+								<input type="checkbox" name="read" id="read" />
+							</div>
+							<button class="addBookBtn" id="addBookBtn2">
+								Add Book
+							</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</main>
 	</body>
