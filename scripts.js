@@ -88,8 +88,8 @@ form.addEventListener("submit", (e) => {
 		const book = myLibrary.find((book) => book.title === newBook.title);
 		console.log(myLibrary.indexOf(book));
 		const card = document.querySelector(`.book[data-index="${myLibrary.indexOf(book)}"]`)
-		card.style.backgroundColor = "gold";
 		card.scrollIntoView();
+		card.style.backgroundColor = "gold";
 		setTimeout(() => card.style.backgroundColor = "initial", 1500)
 		return;
 	}
