@@ -89,6 +89,7 @@ form.addEventListener("submit", (e) => {
 		console.log(myLibrary.indexOf(book));
 		const card = document.querySelector(`.book[data-index="${myLibrary.indexOf(book)}"]`)
 		card.style.backgroundColor = "gold";
+		card.scrollIntoView();
 		setTimeout(() => card.style.backgroundColor = "initial", 1500)
 		return;
 	}
