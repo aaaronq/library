@@ -2,66 +2,69 @@ let myLibrary = [];
 
 const bookGrid = document.querySelector(".bookgrid");
 
-function Book(title, author, pages, read) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = Boolean(read);
-}
+class Book {
 
-function addBookToLibrary(book) {
-	const bookCard = document.createElement("div");
-	const title = document.createElement("p");
-	const author = document.createElement("p");
-	const pages = document.createElement("p");
-	const buttons = document.createElement("div");
-	const readBtn = document.createElement("button");
-	const removeBtn = document.createElement("button");
-
-	bookCard.classList.add("book");
-	bookCard.setAttribute("data-index", myLibrary.indexOf(book));
-	buttons.classList.add("buttons");
-	readBtn.classList.add("btn");
-	readBtn.classList.add("btn-red");
-	removeBtn.classList.add("btn", "btn-remove");
-	readBtn.onclick = () => {
-		readBtn.classList.toggle("btn-green");
-		if (book.read === true) {
-			readBtn.innerText = "Unread";
-			book.read = false;
-		} else {
+	static addBooktoLibrary(book) {
+		const bookCard = document.createElement("div");
+		const title = document.createElement("p");
+		const author = document.createElement("p");
+		const pages = document.createElement("p");
+		const buttons = document.createElement("div");
+		const readBtn = document.createElement("button");
+		const removeBtn = document.createElement("button");
+	
+		bookCard.classList.add("book");
+		bookCard.setAttribute("data-index", myLibrary.indexOf(book));
+		buttons.classList.add("buttons");
+		readBtn.classList.add("btn");
+		readBtn.classList.add("btn-red");
+		removeBtn.classList.add("btn", "btn-remove");
+		readBtn.onclick = () => {
+			readBtn.classList.toggle("btn-green");
+			if (book.read === true) {
+				readBtn.innerText = "Unread";
+				book.read = false;
+			} else {
+				readBtn.innerText = "Read";
+				book.read = true;
+			}
+		};
+	
+		removeBtn.onclick = (e) => {
+			const book = e.target.parentNode.parentNode;
+			const title = book.firstChild.innerText;
+			console.log(`Removed '${title}'`);
+	
+			myLibrary = myLibrary.filter((book) => book.title !== title);
+	
+			book.remove();
+		};
+	
+		if (book.read) {
 			readBtn.innerText = "Read";
-			book.read = true;
-		}
-	};
+			readBtn.classList.add("btn-green");
+		} else readBtn.innerText = "Unread";
+	
+		title.innerText = `${book.title}`;
+		author.innerText = `${book.author}`;
+		pages.innerText = `${book.pages} pages`;
+		removeBtn.innerText = "Remove";
+	
+		bookCard.appendChild(title);
+		bookCard.appendChild(author);
+		bookCard.appendChild(pages);
+		buttons.appendChild(readBtn);
+		buttons.appendChild(removeBtn);
+		bookCard.appendChild(buttons);
+		bookGrid.appendChild(bookCard);
+	}
 
-	removeBtn.onclick = (e) => {
-		const book = e.target.parentNode.parentNode;
-		const title = book.firstChild.innerText;
-		console.log(title);
-
-		myLibrary = myLibrary.filter((book) => book.title !== title);
-
-		book.remove();
-	};
-
-	if (book.read) {
-		readBtn.innerText = "Read";
-		readBtn.classList.add("btn-green");
-	} else readBtn.innerText = "Unread";
-
-	title.innerText = `${book.title}`;
-	author.innerText = `${book.author}`;
-	pages.innerText = `${book.pages} pages`;
-	removeBtn.innerText = "Remove";
-
-	bookCard.appendChild(title);
-	bookCard.appendChild(author);
-	bookCard.appendChild(pages);
-	buttons.appendChild(readBtn);
-	buttons.appendChild(removeBtn);
-	bookCard.appendChild(buttons);
-	bookGrid.appendChild(bookCard);
+	constructor(title, author, pages, read) {
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.read = Boolean(read);
+	}
 }
 
 //Modal interactivity
@@ -87,15 +90,18 @@ form.addEventListener("submit", (e) => {
 	if (myLibrary.some((book) => book.title === newBook.title)) {
 		const book = myLibrary.find((book) => book.title === newBook.title);
 		console.log(myLibrary.indexOf(book));
-		const card = document.querySelector(`.book[data-index="${myLibrary.indexOf(book)}"]`)
+		const card = document.querySelector(
+			`.book[data-index="${myLibrary.indexOf(book)}"]`
+		);
 		card.scrollIntoView();
 		card.style.backgroundColor = "gold";
-		setTimeout(() => card.style.backgroundColor = "initial", 1500)
+		setTimeout(() => (card.style.backgroundColor = "initial"), 1500);
 		return;
 	}
 
 	myLibrary.push(newBook);
-	addBookToLibrary(newBook);
+	Book.addBooktoLibrary(newBook);
+	console.log(`Added '${newBook.title}'`);
 	window.scrollTo(0, document.body.scrollHeight);
 });
 
@@ -103,6 +109,6 @@ let theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 let dubliners = new Book("Dubliners", "James Joyce", 152, false);
 let omam = new Book("Of Mice and Men", "John Steinbeck", 107, true);
 
-addBookToLibrary(theHobbit);
-addBookToLibrary(dubliners);
-addBookToLibrary(omam);
+Book.addBooktoLibrary(theHobbit);
+Book.addBooktoLibrary(dubliners);
+Book.addBooktoLibrary(omam);
